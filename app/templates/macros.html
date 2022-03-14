@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+{% macro displayBlogs(blogs_list)%}
+{%for blog in blogs_list[::-1]%}
+
+<div class="col-md-12">
+    <div class="panel col-sm mt-2 p-3" style="background-color:gray; padding:3%;">
+        <div class="diplayblog column-md-4">
+                <h2 class="title" style="text-align:start">{{blog.blog_title}}</h2>
+            <h4 class="content" style="font-family: 'Charm',cursive; font-size:24px">
+                {{blog.blog_content }}
+            </h4>
+            <p style="font-weight: 600; font-size:20px; color:rgb(0, 0, 0) "><span style="margin-right:3%"><span style="font-weight:600; font-size:20px; color:brown">Posted by :</span>
+                    {{blog.user.username}} </span><span style="font-weight:600; font-size:20px; color:brown">Date :</span>{{blog.posted_at.strftime('%B %d, %Y')}}
+            </p>
+        </div>
+
+        <div class="btn-group col-md-6">
+            <a href="{{url_for('main.delete_blog',id = blog.id, blog_id=blog.id)}}" type="button" style="border: none; margin-right: 3%;"
+                class=" btn btn-danger d-flex"> Delete
+            </a>
+
+            <a href="{{url_for('main.update_blog', id=blog.id)}}" type="button" style="border: none;margin-right: 3%;" class="btn btn-info d-flex">Update Blog
+            </a>
+
+            <a href="{{url_for('main.write_comment',id=blog.id)}}" type="button" style="border: none;"
+                class="btn btn-primary d-flex">
+                Comment</a>
+
+                <div></div>
+
+        </div>
+
+
+    </div>
+</div>
+{% endfor %}
+{%endmacro%}
+
+{%macro displayComments(comments_list)%}
+{%for comment in comments_list%}
+<div class="col-md-12">
+    <hr>
+    <div class="col-md-9">
+        <p style="font-family: 'Charm',cursive; font-size:24px;font-weight:600; ">{{comment.comment}}</p>
+        <p> <span style="font-weight:600; font-size:20px; color:brown;font-family: 'Charm',cursive;">By :</span><span
+            style="font-size:18px;font-family: 'Charm',cursive;">{{comment.user.username}}</span>
+            <span style="font-weight:600; font-size:20px; color:brown;font-family: 'Charm',cursive;">Date:</span> 
+            <span style="font-size:18px;font-family: 'Charm',cursive;">{{comment.comment_date.strftime('%B %d, %Y')}}</span></p>
+
+        <a href="{{url_for('main.delete_comment',id = comment.id)}}" type="button" style="border: none;"
+            class=" btn btn-danger d-flex">Delete
+        </a>
+    </div>
+</div>
+{%endfor%}
+{%endmacro%}
+
+</body>
+
+</html>

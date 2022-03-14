@@ -1,0 +1,72 @@
+{% extends 'base.html'%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet">
+
+</head>
+
+{%block content%}
+
+<style>
+    h3 {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 40px;
+        color: blue
+    }
+
+    p {
+        font-size:24px;
+        font-family: 'Charm',cursive;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <!-- displaying  Username-->
+        <div class="col-md-4">
+            <h3> {{user.username}} </h3>
+
+            <!--Displaying user bio-->
+            {% if user.bio %}
+            <p> {{user.bio}}</p>
+            {%else%}
+            <p> {{user.username}} has no bio </p>
+            {% endif %}
+        </div>
+
+        <!--Display profile photo-->
+        <div class="col-md-4">
+            {% if user.profile_pic_path %}
+        
+            <img style=" border-radius:50%; height:400px;" src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail img-responsive">
+        
+            {%else%}
+            <p>No profile picture</p>
+        
+            {% endif %}
+        
+            {% if user == current_user %}
+            <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype="multipart/form-data">
+        
+                <input type="file" name="photo" class="form-control" required>
+                <input type="submit">
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

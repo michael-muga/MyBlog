@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+<!-- Styles block -->
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/errors.css')}}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet">
+{% endblock %}
+
+<!-- block content -->
+{% block content %}
+<div class="container">
+
+    <h1>Error 404</h1>
+
+    <p>Sorry! We couldn't find the page you are looking for. 
+        Please check the url and try again.</p>
+
+</div>
+
+{% endblock %}

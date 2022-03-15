@@ -1,6 +1,6 @@
 # MyBlog
 
-a website that allows the user to put in his or her blogs
+a website that allows the user to put in his or her blogs delete and even comment.
 by Michael Muga
 
 

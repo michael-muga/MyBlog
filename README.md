@@ -20,7 +20,6 @@ To install or access this website you need:
 * Either a computer with an ide and internet
 
 ### Installation Process
-https://kip-post.herokuapp.com/visit
 the site above
 
 

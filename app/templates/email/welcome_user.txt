@@ -1,0 +1,4 @@
+Hello {{user.username}}
+Welcome to MyBlog
+you have succesfull subscribed to my blog. Feel free to leave feedback and comments 
+on the blogs. Welcome.

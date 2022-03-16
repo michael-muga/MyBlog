@@ -6,6 +6,7 @@ from flask_uploads import UploadSet,configure_uploads,IMAGES
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_mail import Mail
+import os
 
 
 
@@ -44,7 +45,8 @@ def create_app(config_name):
     login_manager.init_app(app)
     mail.init_app(app)
 
-
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 
 
